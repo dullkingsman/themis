@@ -1,0 +1,49 @@
+{
+  "name": "themis",
+  "module": "src/index.ts",
+  "version": "0.0.1",
+  "description": "A simplification of the Openapi spec for Javascript.",
+  "author": "The_C1oud <50553458+dullkingsman@users.noreply.github.com>",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "keywords": [
+    "api",
+    "restful",
+    "rest",
+    "openapi",
+    "swagger",
+    "themis",
+    "jthemis"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dullkingsman/themis"
+  },
+  "homepage": "https://github.com/dullkingsman/themis#readme",
+  "scripts": {
+    "format": "prettier --write \"./**/*.(t|j)s\""
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^16.1.1",
+    "@types/lodash": "^4.14.200",
+    "@types/node": "^20.9.0",
+    "bun-types": "latest",
+    "husky": "^8.0.3",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "chalk": "4.1.2",
+    "lodash": "^4.17.21",
+    "ts-deepmerge": "^6.2.0"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "bun run format"
+    }
+  },
+  "license": "MIT"
+}

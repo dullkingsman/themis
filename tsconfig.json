@@ -1,0 +1,15 @@
+{
+  "extends": "@tsconfig/node16",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "target": "ES2022",
+    "module": "node16",
+    "declaration": true,
+    "outDir": "./lib",
+    "strict": true,
+    "types": ["node", "lodash"],
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["./examples", "node_modules"]
+}
