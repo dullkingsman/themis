@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/dullkingsman/themis#readme",
   "scripts": {
-    "format": "prettier --write \"./**/*.(t|j)s\""
+    "format": "prettier --write \"./**/*.(t|j)s\"",
+    "build": "tsc"
   },
   "devDependencies": {
     "@tsconfig/node16": "^16.1.1",
