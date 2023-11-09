@@ -1,5 +1,5 @@
 {
-  "name": "themis",
+  "name": "@the-c1oud/themis",
   "module": "src/index.ts",
   "version": "0.0.1",
   "description": "A simplification of the Openapi spec for Javascript.",
