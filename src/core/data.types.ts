@@ -2,6 +2,7 @@ import {
   MapFor,
   MediaTypeObject,
   ParameterObject,
+  ReferenceObject,
   RequestBodyObject,
   SchemaObject,
 } from '../swagger';
@@ -56,7 +57,7 @@ export function ENUM(items: string[]): SchemaObject {
 }
 
 export function ARRAY(
-  items: SchemaObject,
+  items: SchemaObject | ReferenceObject,
   example?: any,
   extend?: Omit<SchemaObject, 'items' | 'example'>,
 ): SchemaObject {
@@ -72,7 +73,7 @@ export function ARRAY(
 }
 
 export function OBJECT(
-  properties: { [key: string]: SchemaObject },
+  properties: { [key: string]: SchemaObject | ReferenceObject },
   required?: string[],
   example?: any,
   extend?: Omit<SchemaObject, 'properties' | 'required' | 'example'>,
@@ -89,7 +90,7 @@ export function OBJECT(
   return returnable;
 }
 
-export function ONEOF(schemas: SchemaObject[]): SchemaObject {
+export function ONEOF(schemas: Array<SchemaObject | ReferenceObject>): SchemaObject {
   return { ...OBJECT({}), oneOf: schemas };
 }
 
@@ -102,16 +103,16 @@ export function EXTEND(
 
 export function EXTENDPROPERTIES(
   schema: SchemaObject,
-  properties: { [p: string]: SchemaObject },
+  properties: { [p: string]: SchemaObject | ReferenceObject },
   required?: Array<string>,
 ): SchemaObject {
   let _schema = { ...schema };
 
   let _properties = {
-    ...(!!_schema.items ? _schema.items.properties : _schema.properties),
+    ...(!!_schema.items ? (_schema.items as SchemaObject).properties : _schema.properties),
     ...properties,
   };
-  let _required = !!_schema.items ? _schema.items.required : _schema.required;
+  let _required = !!_schema.items ? (_schema.items as SchemaObject).required : _schema.required;
 
   _required?.push(...(required ?? []));
 
@@ -119,7 +120,7 @@ export function EXTENDPROPERTIES(
     return {
       ..._schema,
       items: {
-        ..._schema.items,
+        ...(schema.items as SchemaObject),
         required: _required,
         properties: { ..._properties },
       },

@@ -376,36 +376,36 @@ export interface SchemaObject {
    * schema to be valid against all specified
    * schemas.
    */
-  allOf?: SchemaObject[];
+  allOf?: Array<SchemaObject | ReferenceObject>;
   /**
    * Specifies a type validation that requires the
    * schema to be valid against only one of the
    * specified schemas.
    */
-  oneOf?: SchemaObject[];
+  oneOf?: Array<SchemaObject | ReferenceObject>;
   /**
    * Specifies a type validation that requires the
    * schema to be valid against at least one of the
    * specified schemas.
    */
-  anyOf?: SchemaObject[];
+  anyOf?: Array<SchemaObject | ReferenceObject>;
   /**
    * Specifies a negating type validation.
    */
-  not?: SchemaObject;
+  not?: SchemaObject | ReferenceObject;
   /**
    * Specifies the schema of a single array instance.
    */
-  items?: SchemaObject;
+  items?: SchemaObject | ReferenceObject;
   /**
    * Specifies the properties that the schema contains.
    */
-  properties?: { [key: string]: SchemaObject };
+  properties?: { [key: string]: SchemaObject | ReferenceObject };
   /**
    * Specifies the properties that a child instance of
    * the schema contains.
    */
-  additionalProperties?: SchemaObject | boolean;
+  additionalProperties?: SchemaObject | ReferenceObject | boolean;
   /**
    * The format in which the data is represented. This is a sub-type
    * categorization.

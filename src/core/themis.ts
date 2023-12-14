@@ -362,7 +362,7 @@ export class Themis {
    */
   defineServers(servers: Array<ServerObject>) {
     this.syncWrap(() => {
-      this.servers = merge(this.servers ?? [], servers ?? []);
+      this.servers = merge({ servers: this.servers ?? [] }, { servers: servers ?? [] }).servers;
     });
   }
 
@@ -389,7 +389,7 @@ export class Themis {
     securityRequirements: Array<SecurityRequirementObject>,
   ): void {
     this.syncWrap(() => {
-      this.security = merge(this.security ?? [], securityRequirements ?? []);
+      this.security = merge({ security: this.security ?? [] }, { security: securityRequirements ?? [] }).security;
     });
   }
 
@@ -405,7 +405,7 @@ export class Themis {
    */
   defineTags(tags: Array<TagObject>): void {
     this.syncWrap(() => {
-      this.tags = merge(this.tags ?? [], tags ?? []);
+      this.tags = merge({ tags: this.tags ?? [] }, { tags: tags ?? [] }).tags;
     });
   }
 
@@ -707,6 +707,38 @@ export class Themis {
     return (
       !!this?.components?.callbacks ? this?.components?.callbacks[key] : {}
     ) as CallbackObject;
+  }
+
+  getSchemaComponentRef(schema: string): ReferenceObject {
+    return { "$ref": `#/components/schemas/${schema}` };
+  }
+
+  getParameterComponentRef(parameter: string): ReferenceObject {
+    return { "$ref": `#/components/parameters/${parameter}` };
+  }
+
+  getResponseComponentRef(response: string): ReferenceObject {
+    return { "$ref": `#/components/responses/${response}` };
+  }
+
+  getHeaderComponentRef(Header: string): ReferenceObject {
+    return { "$ref": `#/components/headers/${Header}` };
+  }
+
+  getRequestBodyComponentRef(requestBody: string): ReferenceObject {
+    return { "$ref": `#/components/requestBodies/${requestBody}` };
+  }
+
+  getSecuritySchemeComponentRef(securityScheme: string): ReferenceObject {
+    return { "$ref": `#/components/securitySchemes/${securityScheme}` };
+  }
+
+  getExampleComponentRef(example: string): ReferenceObject {
+    return { "$ref": `#/components/examples/${example}` };
+  }
+
+  getCallbackComponentRef(callback: string): ReferenceObject {
+    return { "$ref": `#/components/callbacks/${callback}` };
   }
 }
 
