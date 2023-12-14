@@ -431,9 +431,9 @@ export class Themis {
   defineComponents(components: ComponentsObject): void {
     this.syncWrap(() => {
       this.components = merge(
-        this.components ?? {},
-        components,
-      ) as ComponentsObject;
+        { components: this.components ?? {} },
+        { components },
+      ).components as ComponentsObject;
     });
   }
 
@@ -446,9 +446,9 @@ export class Themis {
     this.syncWrap(() => {
       if (!!this.components)
         this.components.callbacks = merge(
-          this.components?.callbacks ?? [],
-          callbacks,
-        ) as MapFor<CallbackObject | ReferenceObject>;
+          { callbacks: this.components?.callbacks ?? [] },
+          { callbacks },
+        ).callbacks as MapFor<CallbackObject | ReferenceObject>;
       else this.components = { callbacks };
     });
   }
@@ -472,9 +472,9 @@ export class Themis {
     this.syncWrap(() => {
       if (!!this.components)
         this.components.examples = merge(
-          this.components?.examples ?? [],
-          examples,
-        );
+          { examples: this.components?.examples ?? [] },
+          { examples },
+        ).examples;
       else this.components = { examples };
     });
   }
@@ -498,9 +498,9 @@ export class Themis {
     this.syncWrap(() => {
       if (!!this.components)
         this.components.headers = merge(
-          this.components?.headers ?? [],
-          headers,
-        );
+          { headers: this.components?.headers ?? [] },
+          { headers },
+        ).headers;
       else this.components = { headers };
     });
   }
@@ -518,7 +518,7 @@ export class Themis {
   defineLinkComponents(links: MapFor<LinkObject | ReferenceObject>): void {
     this.syncWrap(() => {
       if (!!this.components)
-        this.components.links = merge(this.components?.links ?? [], links);
+        this.components.links = merge({ links: this.components?.links ?? [] }, { links }).links;
       else this.components = { links };
     });
   }
@@ -539,9 +539,9 @@ export class Themis {
     this.syncWrap(() => {
       if (!!this.components)
         this.components.parameters = merge(
-          this.components?.parameters ?? [],
-          parameters,
-        );
+          { parameters: this.components?.parameters ?? [] },
+          { parameters },
+        ).parameters;
       else this.components = { parameters };
     });
   }
@@ -565,9 +565,9 @@ export class Themis {
     this.syncWrap(() => {
       if (!!this.components)
         this.components.requestBodies = merge(
-          this.components?.requestBodies ?? [],
-          requestBodies,
-        );
+          { requestBodies: this.components?.requestBodies ?? [] },
+          { requestBodies },
+        ).requestBodies;
       else this.components = { requestBodies };
     });
   }
@@ -591,9 +591,9 @@ export class Themis {
     this.syncWrap(() => {
       if (!!this.components)
         this.components.responses = merge(
-          this.components?.responses ?? [],
-          responses,
-        );
+          { responses: this.components?.responses ?? [] },
+          { responses },
+        ).responses;
       else this.components = { responses };
     });
   }
@@ -617,9 +617,9 @@ export class Themis {
     this.syncWrap(() => {
       if (!!this.components)
         this.components.schemas = merge(
-          this.components?.schemas ?? [],
-          schemas,
-        );
+          { schemas: this.components?.schemas ?? [] },
+          { schemas },
+        ).schemas;
       else this.components = { schemas };
     });
   }
@@ -640,9 +640,9 @@ export class Themis {
     this.syncWrap(() => {
       if (!!this.components)
         this.components.securitySchemes = merge(
-          this.components?.securitySchemes ?? [],
-          securitySchemes,
-        );
+          { securitySchemes: this.components?.securitySchemes ?? [] },
+          { securitySchemes },
+        ).securitySchemes;
       else this.components = { securitySchemes };
     });
   }
