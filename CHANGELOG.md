@@ -6,9 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+
+## 0.2.0 - 2023-12-14
 ### Added
 - Added a way to automatically attach $ref to schemas
-- Added a way to extend schemas with $ref 
+- Added a way to extend schemas with $ref
 
 ### Fixed
 - Fixed no array merge issue for ts-merge

@@ -1,7 +1,7 @@
 {
   "name": "@the_c1oud/themis",
   "module": "src/index.ts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A simplification of the Openapi spec for Javascript.",
   "author": "The_C1oud <50553458+dullkingsman@users.noreply.github.com>",
   "main": "lib/index.js",
